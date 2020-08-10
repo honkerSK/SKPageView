@@ -98,8 +98,6 @@ extension SKTitleView {
             titleLabels.append(label)
             
             // 5.监听label的点击
-            // 事件监听依然是发送消息
-            // swift: #selector
             let tapGes = UITapGestureRecognizer(target: self, action: #selector(titleLabelClick(_:)))
             label.addGestureRecognizer(tapGes)
             label.isUserInteractionEnabled = true

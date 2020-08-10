@@ -37,18 +37,19 @@ class SKPageView: UIView {
 
 extension SKPageView {
     fileprivate func setupUI() {
-        // 1.创建HYTitleView
+        // 1.创建SKTitleView
         let titleFrame = CGRect(x: 0, y: 0, width: bounds.width, height: style.titleHeight)
         let titleView = SKTitleView(frame: titleFrame, style: style, titles: titles)
         titleView.backgroundColor = UIColor.randomColor
         addSubview(titleView)
         
-        // 2.创建HYContentView
+        // 2.创建SKContentView
         let contentFrame = CGRect(x: 0, y: style.titleHeight, width: bounds.width, height: bounds.height - style.titleHeight)
         let contentView = SKContentView(frame: contentFrame, childVcs: childVcs)
         contentView.backgroundColor = UIColor.purple
         addSubview(contentView)
         
-        // 3.让HYTitleView&HYContentView进行交互
+        // 3.让SKTitleView&SKContentView进行交互
+        
     }
 }

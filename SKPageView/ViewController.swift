@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         }
         
         // 4.创建SKPageView
-        let pageFrame = CGRect(x: 0, y: 64, width: view.bounds.width, height: view.bounds.height - 64)
+        let pageFrame = CGRect(x: 0, y: style.navigationBarHeight, width: view.bounds.width, height: view.bounds.height - style.navigationBarHeight)
         let pageView = SKPageView(frame: pageFrame, style: style, titles: titles, childVcs: childVcs)
         pageView.backgroundColor = UIColor.blue
         view.addSubview(pageView)
