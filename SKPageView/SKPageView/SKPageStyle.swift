@@ -46,6 +46,10 @@ class SKPageStyle {
     /// 滚动条线宽
     var bottomLineHeight : CGFloat = 4
     
+    /// 是否需要缩放功能
+    var isScaleEnable : Bool = false
+    var maxScale : CGFloat = 1.2
+    
 }
 
 

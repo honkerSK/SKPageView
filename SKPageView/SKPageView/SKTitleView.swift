@@ -127,7 +127,15 @@ extension SKTitleView {
             titleLabel.frame = CGRect(x: labelX, y: labelY, width: labelW, height: labelH)
         }
         
-        // 3.设置contentSize
+        
+        // 3.设置scale属性
+        if style.isScaleEnable {
+            // ?. 在等号的左边, 那么系统会自动判断可选类型是否有值
+            // ?. 在等号的右边, 那么如果可选类型没有值, 该语句返回nil
+            titleLabels.first?.transform = CGAffineTransform(scaleX: style.maxScale, y: style.maxScale)
+        }
+        
+        // 4.设置contentSize
         if style.isScrollEnable {
             scrollView.contentSize.width = titleLabels.last!.frame.maxX + style.titleMargin * 0.5
         }
@@ -178,17 +186,31 @@ extension SKTitleView {
         // 6.通知代理
         delegate?.titleView(self, currentIndex: currentIndex)
         
-        // 7.调整bottomLine
+        // 7.调整scale缩放
+        if style.isScaleEnable {
+            UIView.animate(withDuration: 0.25, animations: {
+                sourceLabel.transform = CGAffineTransform.identity
+                targetLabel.transform = CGAffineTransform(scaleX: self.style.maxScale, y: self.style.maxScale)
+            })
+        }
+        
+        // 8.调整bottomLine
         if style.isShowBottomLine {
             UIView.animate(withDuration: 0.25, animations: {
                 self.bottomLine.frame.origin.x = targetLabel.frame.origin.x
                 self.bottomLine.frame.size.width = targetLabel.frame.width
             })
         }
+        // transform : frame.wh = bounds.wh * transform的值
         
     }
     
     private func adjustLabelPosition(_ targetLabel : UILabel) {
+        // 0.只有可以滚动的时候调整
+        guard style.isScrollEnable else {
+            return
+        }
+        
         // 1.计算一下offsetX
         var offsetX = targetLabel.center.x - bounds.width * 0.5
         
@@ -224,7 +246,14 @@ extension SKTitleView : SKContentViewDelegate {
         sourceLabel.textColor = UIColor(r: selectRGB.red - progress * deltaRGB.red, g: selectRGB.green - progress * deltaRGB.green, b: selectRGB.blue - progress * deltaRGB.blue)
         targetLabel.textColor = UIColor(r: normalRGB.red + progress * deltaRGB.red, g: normalRGB.green + progress * deltaRGB.green, b: normalRGB.blue + progress * deltaRGB.blue)
         
-        // 3.bottomLine的调整
+        // 3.scale的调整
+        if style.isScaleEnable {
+            let deltaScale = style.maxScale - 1.0
+            sourceLabel.transform = CGAffineTransform(scaleX: style.maxScale - progress * deltaScale, y: style.maxScale - progress * deltaScale)
+            targetLabel.transform = CGAffineTransform(scaleX: 1.0 + progress * deltaScale, y: 1.0 + progress * deltaScale)
+        }
+        
+        // 4.bottomLine的调整
         if style.isShowBottomLine {
             let deltaX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
             let deltaW = targetLabel.frame.width - sourceLabel.frame.width
