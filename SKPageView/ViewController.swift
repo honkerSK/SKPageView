@@ -21,8 +21,7 @@ class ViewController: UIViewController {
         style.isScrollEnable = true
         
         // 2.获取所有的标题
-        // let titles = ["推荐", "游戏", "热门", "趣玩", "娱乐"]
-        let titles = ["推荐", "游戏游戏游戏", "热门游戏", "趣玩游", "娱乐", "热门游戏", "趣玩游", "娱乐"]
+        let titles = ["首页", "电器电器电器电器", "百货", "母婴", "洗护", "医药", "女装女装", "手机"]
         
         // 3.获取所有的内容控制器
         // 两种区间
@@ -37,7 +36,7 @@ class ViewController: UIViewController {
         
         // 4.创建SKPageView
         let pageFrame = CGRect(x: 0, y: style.navigationBarHeight, width: view.bounds.width, height: view.bounds.height - style.navigationBarHeight)
-        let pageView = SKPageView(frame: pageFrame, style: style, titles: titles, childVcs: childVcs)
+        let pageView = SKPageView(frame: pageFrame, style: style, titles: titles, childVcs: childVcs, parentVc: self)
         pageView.backgroundColor = UIColor.blue
         view.addSubview(pageView)
     }
