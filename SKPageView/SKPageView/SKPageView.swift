@@ -52,6 +52,6 @@ extension SKPageView {
         addSubview(contentView)
         
         // 3.让SKTitleView&SKContentView进行交互
-        
+        titleView.delegate = contentView
     }
 }
