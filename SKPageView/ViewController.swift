@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         // 1.创建需要的样式
         let style = SKPageStyle()
         style.isScrollEnable = true
-//        style.isShowBottomLine = true
-        style.isShowCoverView = true
+        style.isShowBottomLine = true
+//        style.isShowCoverView = true
 
         
         // 2.获取所有的标题
