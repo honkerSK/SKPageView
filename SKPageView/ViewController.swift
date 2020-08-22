@@ -19,8 +19,9 @@ class ViewController: UIViewController {
         // 1.创建需要的样式
         let style = SKPageStyle()
         style.isScrollEnable = true
-        style.isShowBottomLine = true
-        style.isScaleEnable = true
+//        style.isShowBottomLine = true
+        style.isShowCoverView = true
+
         
         // 2.获取所有的标题
         let titles = ["首页", "电器电器电器电器", "百货", "母婴", "洗护", "医药", "女装女装", "手机"]

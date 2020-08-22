@@ -9,6 +9,7 @@
 import UIKit
 
 class SKPageStyle {
+    //MARK:- 屏幕适配
     /// 屏幕宽
     let screenWidth = UIScreen.main.bounds.width
     /// 屏幕高
@@ -24,7 +25,7 @@ class SKPageStyle {
     /// 底部非安全区域高度
     let bottomSafeHeight = (UIApplication.shared.statusBarFrame.size.height > 21) ? 34 : 0 as CGFloat
     
-    
+    //MARK:- titleView设置
     /// 是否可以滚动
     var isScrollEnable : Bool = false
     
@@ -49,6 +50,16 @@ class SKPageStyle {
     /// 是否需要缩放功能
     var isScaleEnable : Bool = false
     var maxScale : CGFloat = 1.2
+    
+    //MARK:- 标题背景coverView相关
+    //是否需要显示的coverView
+    var isShowCoverView : Bool = false
+    var coverBgColor : UIColor = UIColor.black
+    var coverAlpha : CGFloat = 0.4
+    var coverMargin : CGFloat = 8
+    var coverHeight : CGFloat = 25
+    var coverRadius : CGFloat = 12
+    
     
 }
 

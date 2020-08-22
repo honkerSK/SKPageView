@@ -48,6 +48,14 @@ class SKTitleView: UIView {
         return bottomLine
     }()
     
+    ///
+    fileprivate lazy var coverView : UIView = {
+        let coverView = UIView()
+        coverView.backgroundColor = self.style.coverBgColor
+        coverView.alpha = self.style.coverAlpha
+        return coverView
+    }()
+    
     // MARK: 构造函数
     init(frame: CGRect, style : SKPageStyle, titles : [String]) {
         self.style = style
@@ -77,6 +85,9 @@ extension SKTitleView {
         
         // 4.设置bottomLine
         setupBottomLine()
+        
+        // 5.设置coverView
+        setupCoverView()
     }
     
     private func setupTitleLabels() {
@@ -156,6 +167,32 @@ extension SKTitleView {
         bottomLine.frame.size.width = titleLabels.first!.frame.width
     }
     
+    private func setupCoverView() {
+        // 1.判断是否需要显示coverView
+        guard style.isShowCoverView else {
+            return
+        }
+        
+        // 2.添加到scrollView
+        scrollView.insertSubview(coverView, at: 0)
+        
+        // 3.设置遮盖的frame
+        let firstLabel = titleLabels.first!
+        var coverW = firstLabel.bounds.width
+        let coverH = style.coverHeight
+        var coverX = firstLabel.frame.origin.x
+        let coverY = (firstLabel.frame.height - coverH) * 0.5
+        if style.isScrollEnable {
+            coverX -= style.coverMargin
+            coverW += 2 * style.coverMargin
+        }
+        coverView.frame = CGRect(x: coverX, y: coverY, width: coverW, height: coverH)
+        
+        // 4.设置圆角
+        coverView.layer.cornerRadius = style.coverRadius
+        coverView.layer.masksToBounds = true
+    }
+    
 }
 
 
@@ -201,7 +238,16 @@ extension SKTitleView {
                 self.bottomLine.frame.size.width = targetLabel.frame.width
             })
         }
-        // transform : frame.wh = bounds.wh * transform的值
+
+        // 9.调整CoverView
+        if style.isShowCoverView {
+            let coverX = style.isScrollEnable ? (targetLabel.frame.origin.x - style.coverMargin) : targetLabel.frame.origin.x
+            let coverW = style.isScrollEnable ? (targetLabel.frame.width + style.coverMargin * 2) : targetLabel.frame.width
+            UIView.animate(withDuration: 0.15, animations: {
+                self.coverView.frame.origin.x = coverX
+                self.coverView.frame.size.width = coverW
+            })
+        }
         
     }
     
@@ -259,6 +305,14 @@ extension SKTitleView : SKContentViewDelegate {
             let deltaW = targetLabel.frame.width - sourceLabel.frame.width
             bottomLine.frame.origin.x = sourceLabel.frame.origin.x + progress * deltaX
             bottomLine.frame.size.width = sourceLabel.frame.width + progress * deltaW
+        }
+        
+        // 5.coverView的调整
+        if style.isShowCoverView {
+            let deltaX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+            let deltaW = targetLabel.frame.width - sourceLabel.frame.width
+            coverView.frame.size.width = style.isScrollEnable ? (sourceLabel.frame.width + 2 * style.coverMargin + deltaW * progress) : (sourceLabel.frame.width + deltaW * progress)
+            coverView.frame.origin.x = style.isScrollEnable ? (sourceLabel.frame.origin.x - style.coverMargin + deltaX * progress) : (sourceLabel.frame.origin.x + deltaX * progress)
         }
     }
 }
