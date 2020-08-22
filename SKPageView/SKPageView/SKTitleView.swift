@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SKTitleViewDelegate : class {
+    ///监听每个label的点击
     func titleView(_ titleView : SKTitleView, currentIndex : Int)
 }
 
@@ -19,6 +20,16 @@ class SKTitleView: UIView {
     fileprivate var style : SKPageStyle
     fileprivate var titles : [String]
     fileprivate var currentIndex : Int = 0
+
+    typealias ColorRGB = (red : CGFloat, green : CGFloat, blue : CGFloat)
+    fileprivate lazy var selectRGB : ColorRGB = self.style.selectColor.getRGB()
+    fileprivate lazy var normalRGB : ColorRGB = self.style.normalColor.getRGB()
+    fileprivate lazy var deltaRGB : ColorRGB = {
+        let deltaR = self.selectRGB.red - self.normalRGB.red
+        let deltaG = self.selectRGB.green - self.normalRGB.green
+        let deltaB = self.selectRGB.blue - self.normalRGB.blue
+        return (deltaR, deltaG, deltaB)
+    }()
 
     fileprivate lazy var titleLabels : [UILabel] = [UILabel]()
     fileprivate lazy var scrollView : UIScrollView = {
@@ -157,3 +168,25 @@ extension SKTitleView {
         scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
 }
+
+
+extension SKTitleView : SKContentViewDelegate {
+    func contentView(_ contentView: SKContentView, inIndex: Int) {
+        // 1.记录最新的currentIndex
+        currentIndex = inIndex
+        
+        // 2.让targetLabel居中显示
+        adjustLabelPosition(titleLabels[currentIndex])
+    }
+    
+    func contentView(_ contentView: SKContentView, sourceIndex: Int, targetIndex: Int, progress: CGFloat) {
+        // 1.获取sourceLabel&targetLabel
+        let sourceLabel = titleLabels[sourceIndex]
+        let targetLabel = titleLabels[targetIndex]
+        
+        // 2.颜色的渐变
+        sourceLabel.textColor = UIColor(r: selectRGB.red - progress * deltaRGB.red, g: selectRGB.green - progress * deltaRGB.green, b: selectRGB.blue - progress * deltaRGB.blue)
+        targetLabel.textColor = UIColor(r: normalRGB.red + progress * deltaRGB.red, g: normalRGB.green + progress * deltaRGB.green, b: normalRGB.blue + progress * deltaRGB.blue)
+    }
+}
+
