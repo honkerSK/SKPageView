@@ -5,9 +5,9 @@
 
 
 #### 带下划线分类标题栏
-<img src="https://github.com/honkerSK/SKPageView/img/bottomLine.png" width="500" alt="SKPageView"></img>
+<img src="https://github.com/honkerSK/SKPageView/tree/master/img/bottomLine.png" width="500" alt="SKPageView"></img>
 
 
 
 #### 带背景分类标题栏
-<img src="https://github.com/honkerSK/SKPageView/img/coverView.png" width="500" alt="SKPageView"></img>
+<img src="https://github.com/honkerSK/SKPageView/tree/master/img/coverView.png" width="500" alt="SKPageView"></img>
