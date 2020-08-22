@@ -42,7 +42,7 @@ extension SKPageView {
         // 1.创建SKTitleView
         let titleFrame = CGRect(x: 0, y: 0, width: bounds.width, height: style.titleHeight)
         let titleView = SKTitleView(frame: titleFrame, style: style, titles: titles)
-        titleView.backgroundColor = UIColor.randomColor
+        titleView.backgroundColor = style.titleViewBgColor
         addSubview(titleView)
         
         // 2.创建SKContentView

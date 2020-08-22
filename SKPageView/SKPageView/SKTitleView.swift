@@ -39,6 +39,14 @@ class SKTitleView: UIView {
         scrollView.scrollsToTop = false
         return scrollView
     }()
+    ///底部横线
+    fileprivate lazy var bottomLine : UIView = {
+        let bottomLine = UIView()
+        bottomLine.backgroundColor = self.style.bottomLineColor
+        bottomLine.frame.size.height = self.style.bottomLineHeight
+        bottomLine.frame.origin.y = self.bounds.height - self.style.bottomLineHeight
+        return bottomLine
+    }()
     
     // MARK: 构造函数
     init(frame: CGRect, style : SKPageStyle, titles : [String]) {
@@ -66,6 +74,35 @@ extension SKTitleView {
         
         // 3.设置label的frame
         setupLabelsFrame()
+        
+        // 4.设置bottomLine
+        setupBottomLine()
+    }
+    
+    private func setupTitleLabels() {
+        // 元祖: (a,b)
+        for (i, title) in titles.enumerated() {
+            // 1.创建UILabel
+            let label = UILabel()
+            
+            // 2.设置label的属性
+            label.tag = i
+            label.text = title
+            label.textColor = i == 0 ? style.selectColor : style.normalColor
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: style.fontSize)
+            
+            // 3.将label添加到scrollView中
+            scrollView.addSubview(label)
+            
+            // 4.将label添加到数组中
+            titleLabels.append(label)
+            
+            // 5.监听label的点击
+            let tapGes = UITapGestureRecognizer(target: self, action: #selector(titleLabelClick(_:)))
+            label.addGestureRecognizer(tapGes)
+            label.isUserInteractionEnabled = true
+        }
     }
     
     private func setupLabelsFrame() {
@@ -95,32 +132,22 @@ extension SKTitleView {
             scrollView.contentSize.width = titleLabels.last!.frame.maxX + style.titleMargin * 0.5
         }
     }
+
     
-    private func setupTitleLabels() {
-        // 元祖: (a,b)
-        for (i, title) in titles.enumerated() {
-            // 1.创建UILabel
-            let label = UILabel()
-            
-            // 2.设置label的属性
-            label.tag = i
-            label.text = title
-            label.textColor = i == 0 ? style.selectColor : style.normalColor
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: style.fontSize)
-            
-            // 3.将label添加到scrollView中
-            scrollView.addSubview(label)
-            
-            // 4.将label添加到数组中
-            titleLabels.append(label)
-            
-            // 5.监听label的点击
-            let tapGes = UITapGestureRecognizer(target: self, action: #selector(titleLabelClick(_:)))
-            label.addGestureRecognizer(tapGes)
-            label.isUserInteractionEnabled = true
+    private func setupBottomLine() {
+        // 1.判断是否需要显示BottomLine
+        guard style.isShowBottomLine else {
+            return
         }
+        
+        // 2.将bottomLine添加到scrollView中
+        scrollView.addSubview(bottomLine)
+        
+        // 3.设置bottomLine的frame中的属性
+        bottomLine.frame.origin.x = titleLabels.first!.frame.origin.x
+        bottomLine.frame.size.width = titleLabels.first!.frame.width
     }
+    
 }
 
 
@@ -150,6 +177,15 @@ extension SKTitleView {
         
         // 6.通知代理
         delegate?.titleView(self, currentIndex: currentIndex)
+        
+        // 7.调整bottomLine
+        if style.isShowBottomLine {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.bottomLine.frame.origin.x = targetLabel.frame.origin.x
+                self.bottomLine.frame.size.width = targetLabel.frame.width
+            })
+        }
+        
     }
     
     private func adjustLabelPosition(_ targetLabel : UILabel) {
@@ -187,6 +223,14 @@ extension SKTitleView : SKContentViewDelegate {
         // 2.颜色的渐变
         sourceLabel.textColor = UIColor(r: selectRGB.red - progress * deltaRGB.red, g: selectRGB.green - progress * deltaRGB.green, b: selectRGB.blue - progress * deltaRGB.blue)
         targetLabel.textColor = UIColor(r: normalRGB.red + progress * deltaRGB.red, g: normalRGB.green + progress * deltaRGB.green, b: normalRGB.blue + progress * deltaRGB.blue)
+        
+        // 3.bottomLine的调整
+        if style.isShowBottomLine {
+            let deltaX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+            let deltaW = targetLabel.frame.width - sourceLabel.frame.width
+            bottomLine.frame.origin.x = sourceLabel.frame.origin.x + progress * deltaX
+            bottomLine.frame.size.width = sourceLabel.frame.width + progress * deltaW
+        }
     }
 }
 

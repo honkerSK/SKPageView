@@ -28,6 +28,9 @@ class SKPageStyle {
     /// 是否可以滚动
     var isScrollEnable : Bool = false
     
+    ///titleView背景色
+    let titleViewBgColor : UIColor = UIColor.lightGray
+    
     // Label的一些属性
     var titleHeight : CGFloat = 44
     var normalColor : UIColor = UIColor.white
@@ -36,7 +39,12 @@ class SKPageStyle {
     
     var titleMargin : CGFloat = 30
     
-    
+    /// 是否显示滚动条
+    var isShowBottomLine : Bool = false
+    /// 滚动条颜色
+    var bottomLineColor : UIColor = UIColor.orange
+    /// 滚动条线宽
+    var bottomLineHeight : CGFloat = 4
     
 }
 

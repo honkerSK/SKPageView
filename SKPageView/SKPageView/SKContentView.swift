@@ -11,7 +11,9 @@ import UIKit
 private let kContentCellID = "kContentCellID"
 
 protocol SKContentViewDelegate : NSObjectProtocol {
+    ///滚动结束的回调, 传出index
     func contentView(_ contentView : SKContentView, inIndex : Int)
+    ///滚动时的回调,传出sourceIndex,targetIndex,progress 让标题颜色渐变
     func contentView(_ contentView : SKContentView, sourceIndex : Int, targetIndex : Int, progress : CGFloat)
 }
 
