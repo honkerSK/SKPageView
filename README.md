@@ -13,8 +13,11 @@
 <img src="https://github.com/honkerSK/SKPageView/tree/master/img/coverView.png" width="500" alt="SKPageView"></img>
 
 
-#### 使用简介,可参考源码中 ViewController.swift
+#### 使用
 
+首先拖入SKPageView文件夹中所有文件.
+
+用法举例, 可参考源码中 ViewController.swift:
 1.设置需要的样式, SKPageStyle属性根据需求设置,都有默认值
 
 ```
