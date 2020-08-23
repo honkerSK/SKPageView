@@ -27,9 +27,6 @@ class ViewController: UIViewController {
         let titles = ["首页", "电器电器电器电器", "百货", "母婴", "洗护", "医药", "女装女装", "手机"]
         
         // 3.获取所有的内容控制器
-        // 两种区间
-        // 0..<5 : 0~4
-        // 0...5 : 0~5
         var childVcs = [UIViewController]()
         for _ in 0..<titles.count {
             let vc = UIViewController()

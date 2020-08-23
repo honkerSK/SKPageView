@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //手动添加window属性
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         if #available(iOS 13, *) {
