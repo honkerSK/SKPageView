@@ -34,8 +34,8 @@ class BottomTitleViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.lineSpacing = 10
         layout.itemSpacing = 10
-        layout.cols = 4
-        layout.rows = 2
+        layout.cols = 7
+        layout.rows = 3
         
         
         // 4.创建HYPageView
@@ -59,13 +59,13 @@ extension BottomTitleViewController : SKPageViewDataSource {
     
     func pageView(_ pageView: SKPageView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 12
+            return 70
         } else if section == 1 {
-            return 30
+            return 15
         } else if section == 2 {
-            return 7
+            return 45
         }
-        return 13
+        return 40
     }
     
     func pageView(_ pageView: SKPageView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {

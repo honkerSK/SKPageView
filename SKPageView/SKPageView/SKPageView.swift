@@ -168,7 +168,7 @@ extension SKPageView : UICollectionViewDelegate {
     
     func collectionViewDidEndScroll() {
         // 1.获取当前显示页中的某一个cell的indexPath
-        let point = CGPoint(x: layout.sectionInset.left + collectionView.contentOffset.x, y: layout.sectionInset.top)
+        let point = CGPoint(x: layout.sectionInset.left + collectionView.contentOffset.x + 1, y: layout.sectionInset.top + 1)
         guard let indexPath = collectionView.indexPathForItem(at: point) else {
             return
         }
@@ -178,6 +178,7 @@ extension SKPageView : UICollectionViewDelegate {
             // 2.1.改变pageControl的numberOfPages
             let itemCount = dataSource?.pageView(self, numberOfItemsInSection: indexPath.section) ?? 0
             pageControl.numberOfPages = (itemCount - 1) / (layout.rows * layout.cols) + 1
+            print("pageControl.numberOfPages = \(pageControl.numberOfPages)")
             
             // 2.2.记录最新的currentSection
             currentSection = indexPath.section
@@ -187,7 +188,7 @@ extension SKPageView : UICollectionViewDelegate {
         }
         
         // 3.显示pageControl正确的currentPage
-        let pageIndex = indexPath.item / 8
+        let pageIndex = indexPath.item / (layout.rows * layout.cols)
         pageControl.currentPage = pageIndex
     }
 }
