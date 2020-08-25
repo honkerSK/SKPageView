@@ -18,6 +18,9 @@
 		E1672BEB24B6FD0E009D61FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1672BEA24B6FD0E009D61FB /* Assets.xcassets */; };
 		E1672BEE24B6FD0E009D61FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1672BEC24B6FD0E009D61FB /* LaunchScreen.storyboard */; };
 		E1672BF724B6FD78009D61FB /* SKPageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1672BF624B6FD78009D61FB /* SKPageStyle.swift */; };
+		E191C0A824F4B5F200FB3721 /* SKPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191C0A724F4B5F200FB3721 /* SKPageViewLayout.swift */; };
+		E191C0AA24F4BED100FB3721 /* TopTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */; };
+		E191C0AC24F4BEE900FB3721 /* BottomTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		E1672BED24B6FD0E009D61FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1672BEF24B6FD0E009D61FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1672BF624B6FD78009D61FB /* SKPageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPageStyle.swift; sourceTree = "<group>"; };
+		E191C0A724F4B5F200FB3721 /* SKPageViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPageViewLayout.swift; sourceTree = "<group>"; };
+		E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTitleViewController.swift; sourceTree = "<group>"; };
+		E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTitleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,8 @@
 				E1672BE124B6FD0C009D61FB /* AppDelegate.swift */,
 				E1672BE324B6FD0C009D61FB /* SceneDelegate.swift */,
 				E1672BE524B6FD0C009D61FB /* ViewController.swift */,
+				E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */,
+				E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */,
 				E1672BE724B6FD0C009D61FB /* Main.storyboard */,
 				E1672BEA24B6FD0E009D61FB /* Assets.xcassets */,
 				E1672BEC24B6FD0E009D61FB /* LaunchScreen.storyboard */,
@@ -85,6 +93,7 @@
 				E134241524B76F9F00698B37 /* SKPageView.swift */,
 				E134241724B76FED00698B37 /* SKTitleView.swift */,
 				E134241924B7702C00698B37 /* SKContentView.swift */,
+				E191C0A724F4B5F200FB3721 /* SKPageViewLayout.swift */,
 				E134241324B74B5F00698B37 /* UIColorExtension.swift */,
 			);
 			path = SKPageView;
@@ -165,6 +174,9 @@
 				E134241624B76F9F00698B37 /* SKPageView.swift in Sources */,
 				E134241A24B7702C00698B37 /* SKContentView.swift in Sources */,
 				E1672BE624B6FD0C009D61FB /* ViewController.swift in Sources */,
+				E191C0AC24F4BEE900FB3721 /* BottomTitleViewController.swift in Sources */,
+				E191C0A824F4B5F200FB3721 /* SKPageViewLayout.swift in Sources */,
+				E191C0AA24F4BED100FB3721 /* TopTitleViewController.swift in Sources */,
 				E134241424B74B5F00698B37 /* UIColorExtension.swift in Sources */,
 				E1672BE224B6FD0C009D61FB /* AppDelegate.swift in Sources */,
 				E1672BE424B6FD0C009D61FB /* SceneDelegate.swift in Sources */,

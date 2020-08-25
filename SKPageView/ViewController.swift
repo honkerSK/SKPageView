@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     // MARK: 重写的函数
@@ -16,30 +17,40 @@ class ViewController: UIViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         
-        // 1.创建需要的样式
-        let style = SKPageStyle()
-        style.isScrollEnable = true
-        style.isShowBottomLine = true
-//        style.isShowCoverView = true
-
+        let topBtn = UIButton(type: .custom)
+        topBtn.setTitle("顶部分类标题栏示例", for: .normal)
+        topBtn.setTitleColor(.blue, for: .normal)
+        topBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        topBtn.frame = CGRect(x: 100, y: 200, width: 180, height: 50)
+        topBtn.addTarget(self, action: #selector(pushTopTitleVC), for: .touchUpInside)
+        view.addSubview(topBtn)
         
-        // 2.获取所有的标题
-        let titles = ["首页", "电器电器电器电器", "百货", "母婴", "洗护", "医药", "女装女装", "手机"]
         
-        // 3.获取所有的内容控制器
-        var childVcs = [UIViewController]()
-        for _ in 0..<titles.count {
-            let vc = UIViewController()
-            vc.view.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(256))/255.0, green: CGFloat(arc4random_uniform(256))/255.0, blue: CGFloat(arc4random_uniform(256))/255.0, alpha: 1.0)
-            childVcs.append(vc)
-        }
+        let bottomBtn = UIButton(type: .custom)
+        bottomBtn.setTitle("底部分类标题栏", for: .normal)
+        bottomBtn.setTitleColor(.blue, for: .normal)
+        bottomBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        bottomBtn.frame = CGRect(x: 100, y: 300, width: 180, height: 50)
+        bottomBtn.addTarget(self, action: #selector(pushBottomTitleVC), for: .touchUpInside)
+        view.addSubview(bottomBtn)
         
-        // 4.创建SKPageView
-        let pageFrame = CGRect(x: 0, y: style.navigationBarHeight, width: view.bounds.width, height: view.bounds.height - style.navigationBarHeight)
-        let pageView = SKPageView(frame: pageFrame, style: style, titles: titles, childVcs: childVcs, parentVc: self)
-        pageView.backgroundColor = UIColor.blue
-        view.addSubview(pageView)
     }
     
+    @objc func pushTopTitleVC() {
+        let topTitleVC = TopTitleViewController()
+        self.navigationController?.pushViewController(topTitleVC, animated: true)
+        
+    }
+    
+    @objc func pushBottomTitleVC() {
+        let bottomTitleVC = BottomTitleViewController()
+        self.navigationController?.pushViewController(bottomTitleVC, animated: true)
+    }
+    
+    
 }
+
+
+
+
 

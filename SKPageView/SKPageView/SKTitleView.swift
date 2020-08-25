@@ -14,14 +14,15 @@ protocol SKTitleViewDelegate : class {
 }
 
 class SKTitleView: UIView {
+    typealias ColorRGB = (red : CGFloat, green : CGFloat, blue : CGFloat)
+    
     // MARK: 定义属性
     weak var delegate : SKTitleViewDelegate?
     
     fileprivate var style : SKPageStyle
     fileprivate var titles : [String]
     fileprivate var currentIndex : Int = 0
-
-    typealias ColorRGB = (red : CGFloat, green : CGFloat, blue : CGFloat)
+    
     fileprivate lazy var selectRGB : ColorRGB = self.style.selectColor.getRGB()
     fileprivate lazy var normalRGB : ColorRGB = self.style.normalColor.getRGB()
     fileprivate lazy var deltaRGB : ColorRGB = {
@@ -30,7 +31,7 @@ class SKTitleView: UIView {
         let deltaB = self.selectRGB.blue - self.normalRGB.blue
         return (deltaR, deltaG, deltaB)
     }()
-
+    
     fileprivate lazy var titleLabels : [UILabel] = [UILabel]()
     fileprivate lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -48,7 +49,7 @@ class SKTitleView: UIView {
         return bottomLine
     }()
     
-    ///
+    ///文本背景
     fileprivate lazy var coverView : UIView = {
         let coverView = UIView()
         coverView.backgroundColor = self.style.coverBgColor
@@ -151,7 +152,7 @@ extension SKTitleView {
             scrollView.contentSize.width = titleLabels.last!.frame.maxX + style.titleMargin * 0.5
         }
     }
-
+    
     
     private func setupBottomLine() {
         // 1.判断是否需要显示BottomLine
@@ -207,23 +208,29 @@ extension SKTitleView {
             return
         }
         
-        // 2.取出原来的label
+        // 2.设置最新的targetLabel
+        setTargetLabel(targetLabel)
+        
+        // 3.通知代理
+        delegate?.titleView(self, currentIndex: currentIndex)
+    }
+    
+    fileprivate func setTargetLabel(_ targetLabel : UILabel) {
+        // 1.取出原来的label
         let sourceLabel = titleLabels[currentIndex]
         
-        // 3.改变Label的颜色
+        // 2.改变Label的颜色
         sourceLabel.textColor = style.normalColor
         targetLabel.textColor = style.selectColor
         
-        // 4.记录最新的index
+        // 3.记录最新的index
         currentIndex = targetLabel.tag
         
-        // 5.让点击的label居中显示
+        // 4.让点击的label居中显示
         adjustLabelPosition(targetLabel)
         
-        // 6.通知代理
-        delegate?.titleView(self, currentIndex: currentIndex)
-        
-        // 7.调整scale缩放
+        // 5.调整scale缩放
+        // transform : frame.wh = bounds.wh * transform的值
         if style.isScaleEnable {
             UIView.animate(withDuration: 0.25, animations: {
                 sourceLabel.transform = CGAffineTransform.identity
@@ -231,15 +238,15 @@ extension SKTitleView {
             })
         }
         
-        // 8.调整bottomLine
+        // 6.调整bottomLine
         if style.isShowBottomLine {
             UIView.animate(withDuration: 0.25, animations: {
                 self.bottomLine.frame.origin.x = targetLabel.frame.origin.x
                 self.bottomLine.frame.size.width = targetLabel.frame.width
             })
         }
-
-        // 9.调整CoverView
+        
+        // 7.调整CoverView
         if style.isShowCoverView {
             let coverX = style.isScrollEnable ? (targetLabel.frame.origin.x - style.coverMargin) : targetLabel.frame.origin.x
             let coverW = style.isScrollEnable ? (targetLabel.frame.width + style.coverMargin * 2) : targetLabel.frame.width
@@ -248,8 +255,8 @@ extension SKTitleView {
                 self.coverView.frame.size.width = coverW
             })
         }
-        
     }
+    
     
     private func adjustLabelPosition(_ targetLabel : UILabel) {
         // 0.只有可以滚动的时候调整
@@ -314,6 +321,15 @@ extension SKTitleView : SKContentViewDelegate {
             coverView.frame.size.width = style.isScrollEnable ? (sourceLabel.frame.width + 2 * style.coverMargin + deltaW * progress) : (sourceLabel.frame.width + deltaW * progress)
             coverView.frame.origin.x = style.isScrollEnable ? (sourceLabel.frame.origin.x - style.coverMargin + deltaX * progress) : (sourceLabel.frame.origin.x + deltaX * progress)
         }
+    }
+}
+
+
+// MARK:- 对外提供的函数
+extension SKTitleView {
+    ///根据currentSection, 让titleView选中最新的title
+    func setCurrentIndex(currentIndex : Int) {
+        setTargetLabel(titleLabels[currentIndex])
     }
 }
 
