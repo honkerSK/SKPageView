@@ -47,7 +47,6 @@ class BottomTitleViewController: UIViewController {
         pageCollectionView.backgroundColor = UIColor.orange
         view.addSubview(pageCollectionView)
         
-        
     }
     
 }
@@ -70,47 +69,18 @@ extension BottomTitleViewController : SKPageCollectionViewDataSource {
     }
     
     func pageCollectionView(_ pageCollectionView: SKPageCollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = pageCollectionView.dequeueReusableCell(withReuseIdentifier: kCollectionViewCellID, for: indexPath)
-        
         cell.backgroundColor = UIColor.randomColor
         return cell
     }
     
-    /*
-     func numberOfSectionsInPageView(_ pageView: SKPageView) -> Int {
-     return 4
-     }
-     
-     func pageView(_ pageView: SKPageView, numberOfItemsInSection section: Int) -> Int {
-     if section == 0 {
-     return 70
-     } else if section == 1 {
-     return 15
-     } else if section == 2 {
-     return 45
-     }
-     return 40
-     }
-     
-     func pageView(_ pageView: SKPageView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
-     let cell = pageView.dequeueReusableCell(withReuseIdentifier: kCollectionViewCellID, for: indexPath)
-     
-     cell.backgroundColor = UIColor.randomColor
-     return cell
-     }
-     */
 }
 
 
 extension BottomTitleViewController : SKPageCollectionViewDelegate {
-//    func pageView(_ pageView: SKPageView, didSelectedAtIndexPath indexPath: IndexPath) {
-//        print(indexPath)
-//    }
     func pageCollectionView(_ pageCollectionView: SKPageCollectionView, didSelectedAtIndexPath indexPath: IndexPath) {
         print(indexPath)
     }
-    
 }
 
 

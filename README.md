@@ -4,19 +4,22 @@
 ### swift5.1版 分类标题栏, 带下划线或者背景的标题栏
 
 
-#### 带下划线分类标题栏
+**带下划线分类标题栏**
 <img src="https://github.com/honkerSK/SKPageView/tree/master/img/bottomLine.png" width="500" alt="SKPageView"></img>
 
 
 
-#### 带背景分类标题栏
+**带背景分类标题栏**
 <img src="https://github.com/honkerSK/SKPageView/tree/master/img/coverView.png" width="500" alt="SKPageView"></img>
 
-#### 底部标题栏,类型表情键盘
+**底部标题栏,类似直播礼物布局**
 <img src="https://github.com/honkerSK/SKPageView/tree/master/img/bottomTitle.png" width="500" alt="SKPageView"></img>
 
+**表情键盘布局**
+<img src="https://github.com/honkerSK/SKPageView/tree/master/img/emojiKeyboard.png" width="500" alt="SKPageView"></img>
 
-#### 使用
+
+#### 一. 带下划线分类标题栏的用法:
 
 首先拖入SKPageView文件夹中所有文件.
 
@@ -83,4 +86,62 @@ pageView.backgroundColor = UIColor.blue
 view.addSubview(pageView)
 ```
 
-**底部标题栏 用法举例, 可参考源码中 BottomTitleViewController.swift**
+#### 二. 底部标题栏的用法:
+**可参考源码中 BottomTitleViewController.swift**
+
++ 1.首先拖入SKPageView文件夹中所有文件.
+
++ 2.创建PageCollectionView
+```
+// 1.创建需要的样式
+let style = SKPageStyle()
+
+// 2.获取所有的标题
+let titles = ["百货", "母婴", "洗护", "医药"]
+
+// 3.创建布局
+let layout = SKPageCollectionViewLayout()
+layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+layout.minimumInteritemSpacing = 10
+layout.minimumLineSpacing = 10
+layout.cols = 4
+layout.rows = 2
+
+
+// 4.创建pageCollectionView
+let pageCollectionViewFrame = CGRect(x: 0, y: style.navigationBarHeight, width: view.bounds.width, height: 300)
+let pageCollectionView = SKPageCollectionView(frame: pageCollectionViewFrame, titles: titles, style: style, layout: layout)
+pageCollectionView.dataSource = self
+pageCollectionView.delegate = self
+pageCollectionView.registerCell(UICollectionViewCell.self, identifier: kCollectionViewCellID)
+pageCollectionView.backgroundColor = UIColor.orange
+view.addSubview(pageCollectionView)
+```
+
++ 3.实现SKPageCollectionViewDataSource数据源
++ 4.实现SKPageCollectionViewDelegate, 代理方法监听每个cell点击
+
+
+#### 三.自定义表情键盘的用法:
+**可参考源码中 EmoticonViewController.swift和EmoticonView.swift**
+步骤同 底部标题栏的用法 类似
+
++ 注意: 底部适配问题, 表情键盘在屏幕底部显示,必须实现SKPageStyle的属性isBottomShow为true
+
+```
+// 1.创建SKPageCollectionView
+let style = SKPageStyle()
+style.normalColor = UIColor(r: 0, g: 0, b: 0)
+//注意:如果在屏幕底部显示,必须实现该属性
+style.isBottomShow = true
+```
+
++ 并且弹出表情键盘View的高度要根据底部安全区域适配
+
+```
+/适配底部安全区域
+let bottomSafeHeight: CGFloat = (UIApplication.shared.statusBarFrame.size.height > 21) ? 34 : 0 as CGFloat
+let emoticonView = EmoticonView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 250 + bottomSafeHeight))
+```
+
+

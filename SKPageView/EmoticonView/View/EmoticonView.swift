@@ -28,20 +28,21 @@ extension EmoticonView {
         // 1.创建SKPageCollectionView
         let style = SKPageStyle()
         style.normalColor = UIColor(r: 0, g: 0, b: 0)
+        //注意:如果在屏幕底部显示,必须实现该属性
         style.isBottomShow = true
         
         let pageFrame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
         let titles = ["普通", "粉丝专属"]
         let layout = SKPageCollectionViewLayout()
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 2
+        layout.minimumInteritemSpacing = 2
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.cols = 7
         layout.rows = 3
        
         let pageCollectionView = SKPageCollectionView(frame: pageFrame, titles: titles, style: style, layout: layout)
         pageCollectionView.dataSource = self
-//        pageCollectionView.delegate = self
+        pageCollectionView.delegate = self
         pageCollectionView.registerNib("EmoticonViewCell", identifier: kPageCellID)
         // 2.将pageCollectionView添加到View中
         addSubview(pageCollectionView)
@@ -67,3 +68,8 @@ extension EmoticonView : SKPageCollectionViewDataSource {
     }
 }
 
+extension EmoticonView : SKPageCollectionViewDelegate {
+    func pageCollectionView(_ pageCollectionView: SKPageCollectionView, didSelectedAtIndexPath indexPath: IndexPath) {
+        print(indexPath)
+    }
+}

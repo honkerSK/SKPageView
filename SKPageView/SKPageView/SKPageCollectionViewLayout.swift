@@ -16,8 +16,9 @@ class SKPageCollectionViewLayout: UICollectionViewLayout {
     var minimumInteritemSpacing : CGFloat = 0
     ///行间距
     var minimumLineSpacing : CGFloat = 0
-    ///指定每组多少行 多少列
+    ///指定每组多少行
     var cols = 4
+    ///指定每组多少列
     var rows = 2
     ///计算该组一共占据多少页
     fileprivate lazy var pageCount = 0
