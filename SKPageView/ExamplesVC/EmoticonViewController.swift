@@ -5,7 +5,7 @@
 //  Created by sunke on 2020/8/26.
 //  Copyright © 2020 KentSun. All rights reserved.
 //
-
+// 自定义表情键盘示例
 import UIKit
 
 class EmoticonViewController: UIViewController {
