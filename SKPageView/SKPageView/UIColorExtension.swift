@@ -13,9 +13,6 @@ extension UIColor{
      在extension中扩充构造函数, 只能扩充便利构造函数
         1> 在init前需要加上关键字convenience
         2> 在自定义的构造函数内部, 必须明确的通过self.init()调用其他的构造函数
-     函数的重载
-        1> 函数名称相同, 但是参数不同的
-        2> 参数不同有两层函数: 1) 参数的类型不同 2) 参数的个数不同
     */
     convenience init(r : CGFloat, g : CGFloat, b : CGFloat, alpha : CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)

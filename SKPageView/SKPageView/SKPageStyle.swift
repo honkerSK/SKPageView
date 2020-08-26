@@ -60,8 +60,10 @@ class SKPageStyle {
     var coverHeight : CGFloat = 25
     var coverRadius : CGFloat = 12
     
-    // pageControl的高度
+    /// pageControl的高度
     var pageControlHeight : CGFloat = 20
+    /// 是否在屏幕底部显示
+    var isBottomShow: Bool = false
     
 }
 

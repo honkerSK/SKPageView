@@ -18,7 +18,17 @@
 		E1672BEB24B6FD0E009D61FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1672BEA24B6FD0E009D61FB /* Assets.xcassets */; };
 		E1672BEE24B6FD0E009D61FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1672BEC24B6FD0E009D61FB /* LaunchScreen.storyboard */; };
 		E1672BF724B6FD78009D61FB /* SKPageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1672BF624B6FD78009D61FB /* SKPageStyle.swift */; };
-		E191C0A824F4B5F200FB3721 /* SKPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191C0A724F4B5F200FB3721 /* SKPageViewLayout.swift */; };
+		E187732D24F6581B002A620F /* EmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187732C24F6581B002A620F /* EmoticonViewController.swift */; };
+		E187733224F65C3D002A620F /* QHNormalEmotionSort.plist in Resources */ = {isa = PBXBuildFile; fileRef = E187733024F65C3C002A620F /* QHNormalEmotionSort.plist */; };
+		E187733324F65C3D002A620F /* QHSohuGifSort.plist in Resources */ = {isa = PBXBuildFile; fileRef = E187733124F65C3C002A620F /* QHSohuGifSort.plist */; };
+		E187733724F65CC2002A620F /* EmoticonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187733624F65CC2002A620F /* EmoticonManager.swift */; };
+		E187733924F65CDB002A620F /* EmoticonPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187733824F65CDB002A620F /* EmoticonPackage.swift */; };
+		E187733B24F65CF3002A620F /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187733A24F65CF3002A620F /* Emoticon.swift */; };
+		E187733D24F65D3E002A620F /* EmoticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187733C24F65D3E002A620F /* EmoticonView.swift */; };
+		E187734024F65FE0002A620F /* EmoticonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187733E24F65FDF002A620F /* EmoticonViewCell.swift */; };
+		E187734124F65FE0002A620F /* EmoticonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E187733F24F65FE0002A620F /* EmoticonViewCell.xib */; };
+		E187734424F6643B002A620F /* SKPageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187734324F6643B002A620F /* SKPageCollectionView.swift */; };
+		E187734624F69ABB002A620F /* SKPageCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187734524F69ABB002A620F /* SKPageCollectionViewLayout.swift */; };
 		E191C0AA24F4BED100FB3721 /* TopTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */; };
 		E191C0AC24F4BEE900FB3721 /* BottomTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +47,17 @@
 		E1672BED24B6FD0E009D61FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1672BEF24B6FD0E009D61FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1672BF624B6FD78009D61FB /* SKPageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPageStyle.swift; sourceTree = "<group>"; };
-		E191C0A724F4B5F200FB3721 /* SKPageViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPageViewLayout.swift; sourceTree = "<group>"; };
+		E187732C24F6581B002A620F /* EmoticonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonViewController.swift; sourceTree = "<group>"; };
+		E187733024F65C3C002A620F /* QHNormalEmotionSort.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = QHNormalEmotionSort.plist; sourceTree = "<group>"; };
+		E187733124F65C3C002A620F /* QHSohuGifSort.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = QHSohuGifSort.plist; sourceTree = "<group>"; };
+		E187733624F65CC2002A620F /* EmoticonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonManager.swift; sourceTree = "<group>"; };
+		E187733824F65CDB002A620F /* EmoticonPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonPackage.swift; sourceTree = "<group>"; };
+		E187733A24F65CF3002A620F /* Emoticon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
+		E187733C24F65D3E002A620F /* EmoticonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonView.swift; sourceTree = "<group>"; };
+		E187733E24F65FDF002A620F /* EmoticonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonViewCell.swift; sourceTree = "<group>"; };
+		E187733F24F65FE0002A620F /* EmoticonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmoticonViewCell.xib; sourceTree = "<group>"; };
+		E187734324F6643B002A620F /* SKPageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPageCollectionView.swift; sourceTree = "<group>"; };
+		E187734524F69ABB002A620F /* SKPageCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPageCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTitleViewController.swift; sourceTree = "<group>"; };
 		E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTitleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,12 +92,12 @@
 		E1672BE024B6FD0C009D61FB /* SKPageView */ = {
 			isa = PBXGroup;
 			children = (
+				E187732E24F65C22002A620F /* EmoticonView */,
 				E1672BF524B6FD42009D61FB /* SKPageView */,
+				E187734224F660F1002A620F /* ExamplesVC */,
 				E1672BE124B6FD0C009D61FB /* AppDelegate.swift */,
 				E1672BE324B6FD0C009D61FB /* SceneDelegate.swift */,
 				E1672BE524B6FD0C009D61FB /* ViewController.swift */,
-				E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */,
-				E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */,
 				E1672BE724B6FD0C009D61FB /* Main.storyboard */,
 				E1672BEA24B6FD0E009D61FB /* Assets.xcassets */,
 				E1672BEC24B6FD0E009D61FB /* LaunchScreen.storyboard */,
@@ -93,10 +113,60 @@
 				E134241524B76F9F00698B37 /* SKPageView.swift */,
 				E134241724B76FED00698B37 /* SKTitleView.swift */,
 				E134241924B7702C00698B37 /* SKContentView.swift */,
-				E191C0A724F4B5F200FB3721 /* SKPageViewLayout.swift */,
+				E187734324F6643B002A620F /* SKPageCollectionView.swift */,
+				E187734524F69ABB002A620F /* SKPageCollectionViewLayout.swift */,
 				E134241324B74B5F00698B37 /* UIColorExtension.swift */,
 			);
 			path = SKPageView;
+			sourceTree = "<group>";
+		};
+		E187732E24F65C22002A620F /* EmoticonView */ = {
+			isa = PBXGroup;
+			children = (
+				E187732F24F65C2D002A620F /* Resource */,
+				E187733424F65C8A002A620F /* Model */,
+				E187733524F65C90002A620F /* View */,
+			);
+			path = EmoticonView;
+			sourceTree = "<group>";
+		};
+		E187732F24F65C2D002A620F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E187733024F65C3C002A620F /* QHNormalEmotionSort.plist */,
+				E187733124F65C3C002A620F /* QHSohuGifSort.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E187733424F65C8A002A620F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E187733624F65CC2002A620F /* EmoticonManager.swift */,
+				E187733824F65CDB002A620F /* EmoticonPackage.swift */,
+				E187733A24F65CF3002A620F /* Emoticon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E187733524F65C90002A620F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E187733C24F65D3E002A620F /* EmoticonView.swift */,
+				E187733E24F65FDF002A620F /* EmoticonViewCell.swift */,
+				E187733F24F65FE0002A620F /* EmoticonViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E187734224F660F1002A620F /* ExamplesVC */ = {
+			isa = PBXGroup;
+			children = (
+				E191C0A924F4BED100FB3721 /* TopTitleViewController.swift */,
+				E191C0AB24F4BEE900FB3721 /* BottomTitleViewController.swift */,
+				E187732C24F6581B002A620F /* EmoticonViewController.swift */,
+			);
+			path = ExamplesVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,9 +227,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E187733224F65C3D002A620F /* QHNormalEmotionSort.plist in Resources */,
 				E1672BEE24B6FD0E009D61FB /* LaunchScreen.storyboard in Resources */,
+				E187734124F65FE0002A620F /* EmoticonViewCell.xib in Resources */,
 				E1672BEB24B6FD0E009D61FB /* Assets.xcassets in Resources */,
 				E1672BE924B6FD0C009D61FB /* Main.storyboard in Resources */,
+				E187733324F65C3D002A620F /* QHSohuGifSort.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,12 +243,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E187733724F65CC2002A620F /* EmoticonManager.swift in Sources */,
+				E187733B24F65CF3002A620F /* Emoticon.swift in Sources */,
 				E1672BF724B6FD78009D61FB /* SKPageStyle.swift in Sources */,
+				E187733924F65CDB002A620F /* EmoticonPackage.swift in Sources */,
 				E134241624B76F9F00698B37 /* SKPageView.swift in Sources */,
+				E187734424F6643B002A620F /* SKPageCollectionView.swift in Sources */,
 				E134241A24B7702C00698B37 /* SKContentView.swift in Sources */,
+				E187734024F65FE0002A620F /* EmoticonViewCell.swift in Sources */,
+				E187733D24F65D3E002A620F /* EmoticonView.swift in Sources */,
 				E1672BE624B6FD0C009D61FB /* ViewController.swift in Sources */,
+				E187734624F69ABB002A620F /* SKPageCollectionViewLayout.swift in Sources */,
+				E187732D24F6581B002A620F /* EmoticonViewController.swift in Sources */,
 				E191C0AC24F4BEE900FB3721 /* BottomTitleViewController.swift in Sources */,
-				E191C0A824F4B5F200FB3721 /* SKPageViewLayout.swift in Sources */,
 				E191C0AA24F4BED100FB3721 /* TopTitleViewController.swift in Sources */,
 				E134241424B74B5F00698B37 /* UIColorExtension.swift in Sources */,
 				E1672BE224B6FD0C009D61FB /* AppDelegate.swift in Sources */,

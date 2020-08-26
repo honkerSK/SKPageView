@@ -34,6 +34,14 @@ class ViewController: UIViewController {
         bottomBtn.addTarget(self, action: #selector(pushBottomTitleVC), for: .touchUpInside)
         view.addSubview(bottomBtn)
         
+        let emoticonBtn = UIButton(type: .custom)
+        emoticonBtn.setTitle("表情键盘", for: .normal)
+        emoticonBtn.setTitleColor(.blue, for: .normal)
+        emoticonBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        emoticonBtn.frame = CGRect(x: 100, y: 400, width: 180, height: 50)
+        emoticonBtn.addTarget(self, action: #selector(pushEmoticonVC), for: .touchUpInside)
+        view.addSubview(emoticonBtn)
+        
     }
     
     @objc func pushTopTitleVC() {
@@ -47,6 +55,10 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(bottomTitleVC, animated: true)
     }
     
+    @objc func pushEmoticonVC() {
+        let emoticonVC = EmoticonViewController()
+        self.navigationController?.pushViewController(emoticonVC, animated: true)
+    }
     
 }
 

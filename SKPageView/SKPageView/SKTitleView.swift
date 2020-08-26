@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SKTitleViewDelegate : class {
+protocol SKTitleViewDelegate : NSObjectProtocol {
     ///监听每个label的点击
     func titleView(_ titleView : SKTitleView, currentIndex : Int)
 }
